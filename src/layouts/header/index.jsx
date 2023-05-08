@@ -27,7 +27,7 @@ const Header = () => {
     return (     
         <Flex
             width="100%"
-            bg='tomato'
+            bg='#025FEB'
             color="white"
             h="60px"
             px={10}

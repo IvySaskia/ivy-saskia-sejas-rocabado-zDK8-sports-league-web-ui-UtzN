@@ -1,6 +1,6 @@
 import React from "react";
 import Footer from "../footer";
-import Header from "../header.jsx";
+import Header from "../header/index.jsx";
 
 import {
   Box,
