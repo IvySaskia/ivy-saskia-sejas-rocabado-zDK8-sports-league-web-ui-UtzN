@@ -1,3 +1,7 @@
+import * as React from 'react'
+
+import { ChakraProvider } from '@chakra-ui/react'
+
 import { Switch, Route } from "react-router-dom";
 
 import MainLayout from "./layouts/main";
@@ -8,22 +12,24 @@ import NoPage from "./pages/no-page";
 
 function App() {
   return (
-    <MainLayout>
-      <Switch>
-        <Route exact path="/">
-          <Schedule />
-        </Route>
-        <Route path="/schedule">
-          <Schedule/>
-        </Route>
-        <Route path="/leaderboard">
-          <Leaderboard />
-        </Route>
-        <Route path="*">
-          <NoPage />
-        </Route>
-      </Switch>
-    </MainLayout>
+    <ChakraProvider>
+      <MainLayout>
+        <Switch>
+          <Route exact path="/">
+            <Schedule />
+          </Route>
+          <Route path="/schedule">
+            <Schedule/>
+          </Route>
+          <Route path="/leaderboard">
+            <Leaderboard />
+          </Route>
+          <Route path="*">
+            <NoPage />
+          </Route>
+        </Switch>
+      </MainLayout>
+    </ChakraProvider>
   );
 }
 
