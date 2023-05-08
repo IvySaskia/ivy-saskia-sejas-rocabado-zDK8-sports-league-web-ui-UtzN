@@ -11,7 +11,7 @@ const MainLayout = ({ children }) => {
   return (
     <Flex minH="100vh" direction="column">
       <Header/>
-      <Box mx="auto" flex={1} p={4} maxW={"7xl"} width="100%">
+      <Box flex={1}>
         {children}
       </Box>
       <Footer />
