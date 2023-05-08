@@ -1,10 +1,20 @@
 import React from "react";
 
+import {
+  Box
+} from "@chakra-ui/react";
+
+
 const Header = () => {
   return (
-    <div>
+    <Box
+        mx="auto"
+        maxW={"7xl"}
+        width="100%"
+        px={4}
+    >
         <p>Header</p>
-    </div>
+    </Box>
   );
 };
 
