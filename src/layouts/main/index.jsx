@@ -11,7 +11,9 @@ const MainLayout = ({ children }) => {
   return (
     <Flex minH="100vh" direction="column">
       <Header/>
-      <Box flex={1}>
+      <Box
+        flex={1}
+      >
         {children}
       </Box>
       <Footer />
