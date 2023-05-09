@@ -43,10 +43,11 @@ const Header = () => {
             </Box>
             <Spacer />
             <HStack spacing={10}>
-                {Links.map(({ name, to, image }) => (
+                {Links.map(({ name, to, image }, index) => (
                     <HStack
                         spacing={2}
                         alignItems={"center"}
+                        key={index}
                     >
                         <Image
                             src = {image}
