@@ -11,6 +11,7 @@ const NoPage = () => {
       alignItems={"center"}
       justifyContent={"center"}
       display='flex'
+      py={16}
     >
       <Image
         src='/images/404.png'
