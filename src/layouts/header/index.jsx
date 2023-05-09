@@ -34,12 +34,12 @@ const Header = () => {
             display='flex'
             alignItems={"center"}
         >
-        <Box p='4'>
-            <Image
-                src='/images/logo.svg'
-                alt='logo'
-                width="100px"
-            />
+            <Box p='4'>
+                <Image
+                    src='/images/logo.svg'
+                    alt='logo'
+                    width="100px"
+                />
             </Box>
             <Spacer />
             <HStack spacing={10}>
@@ -63,7 +63,7 @@ const Header = () => {
                     </HStack>
             ))}
             </HStack>
-    </Flex>
+        </Flex>
   );
 };
 
