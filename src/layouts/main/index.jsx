@@ -17,7 +17,8 @@ const MainLayout = ({ children }) => {
   
   const fetchData = async () => {
     const res = await getAccessToken();
-    storeToken(res.access_token);
+    const { access_token } = res;
+    storeToken(access_token)
   };
 
   useEffect(() => {

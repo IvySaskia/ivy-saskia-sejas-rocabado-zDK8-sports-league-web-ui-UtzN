@@ -24,11 +24,25 @@ const useApi = () => {
       setError(error)
     }
   }
+
+  const getAllMatches = async (token) => {
+    try {
+      const response = await axios.get(`${API_VERSION_URL}getAllMatches`,{
+        headers: {
+          'Authorization': `Bearer ${token}` 
+        }
+      });
+      return response.data;
+    } catch (error) {
+      setError(error)
+    }
+  }
     
   return {
     error,
     getApiVersion,
-    getAccessToken
+    getAccessToken,
+    getAllMatches
   };
 };
 
