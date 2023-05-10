@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   Box,
 } from "@chakra-ui/react";
 
+import useApi from "../../hooks/useApi";
+
 const Footer = () => {
+  const [apiVersion, setApiVersion] = useState([]);
+  const { getApiVersion } = useApi();
+
+  const fetchData = async () => {
+    const res = await getApiVersion();
+    setApiVersion(res.version);
+  };
+
+  useEffect(() => {
+    fetchData();
+  },[]);
+  
   return (
     <Box
       width="100%"
@@ -15,7 +29,9 @@ const Footer = () => {
       alignItems={"center"}
       justifyContent={"end"}
     >
-      <p color="4B5C68">Api Version:</p>
+      <p color="4B5C68">
+        Api Version: {apiVersion}
+      </p>
     </Box>
   );
 };
