@@ -37,7 +37,7 @@ const renderSwitchHeader = (param, h) => {
   switch(param) {
     case 0:
       return <Hide below="500px">
-              <Th key={h}> {h} </Th>
+              <Th key={h} textAlign="right"> {h} </Th>
             </Hide>;
     case 1:
       return <Hide below="751px">
