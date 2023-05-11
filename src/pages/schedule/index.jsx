@@ -6,6 +6,7 @@ import {
   Center,
   Flex,
   Heading,
+  Image,
   Table,
   Thead,
   Tbody,
@@ -13,7 +14,23 @@ import {
   Th,
   Td,
   TableContainer,
+  HStack
 } from "@chakra-ui/react";
+
+import Moment from 'moment';
+
+const renderFlag = (flagName) => {
+  return <Image
+    src={getFlagByName(flagName)}
+    alt={flagName}
+    width="53px"
+    height="37px"
+  />
+};
+
+const getFlagByName = (flagName) => {
+  return `https://flagsapi.codeaid.io/${flagName}.png`;
+};
 
 const Schedule = () => {
   const headers = ['Date/Time', 'Stadim', 'Home Team', '', 'Away Team'];
@@ -46,44 +63,44 @@ const Schedule = () => {
         >
           <Thead>
             <Tr>
-              {headers.map((h) => (
-                <Th key={h}>{h}</Th>
+              {headers.map((h, index) => (
+                index === 2?
+                  <Th
+                    key={h}
+                    textAlign="right"
+                  >
+                    {h}
+                  </Th> :
+                  <Th
+                    key={h}
+                  >
+                    {h}
+                  </Th>
               ))}
             </Tr>
           </Thead>
           <Tbody>
             {
               allMatches.map((m, index) => (
-                <Tr>
-                  <Td>{ index}{ m.matchDate }</Td>
+                <Tr key={index}>
+                  <Td isNumeric>{Moment(m.matchDate).format('D.M.YYYY')}
+                    <br/> {Moment(m.matchDate).format('hh:mm')}</Td>
                   <Td>{ m.stadium  }</Td>
-                  <Td>{ m.homeTeam  }</Td>
-                  <Td>{ m.homeTeamScore  } : { m.awayTeamScore }</Td>
-                  <Td>{m.awayTeam}</Td>
+                  <Td>
+                    <HStack justifyContent="right">
+                      <p>{m.homeTeam}</p>
+                      {renderFlag(m.homeTeam)}
+                    </HStack>
+                  </Td>
+                  <Td px="0" textAlign="center">{ m.homeTeamScore  } : { m.awayTeamScore }</Td>
+                  <Td>
+                    <HStack justifyContent="left">
+                      {renderFlag(m.awayTeam)}
+                      <p>{m.awayTeam}</p>
+                    </HStack>
+                  </Td>
                 </Tr>
             ))}
-
-            {/* <Tr>
-              <Td>5.5.2022</Td>
-              <Td>Macarana</Td>
-              <Td>Brazil</Td>
-              <Td>1 : 0</Td>
-              <Td>Serbia</Td>
-            </Tr>
-            <Tr>
-              <Td>5.5.2022</Td>
-              <Td>Macarana</Td>
-              <Td>Brazil</Td>
-              <Td>1 : 0</Td>
-              <Td>Serbia</Td>
-            </Tr>
-            <Tr>
-              <Td>5.5.2022</Td>
-              <Td>Macarana</Td>
-              <Td>Brazil</Td>
-              <Td>1 : 0</Td>
-              <Td>Serbia</Td>
-            </Tr> */}
           </Tbody>
         </Table>
       </TableContainer>

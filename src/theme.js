@@ -23,7 +23,7 @@ const theme = extendTheme({
           fontSize: "14px",
           td: {
             height: "70px"
-          }
+          },
         },
       },
     },
