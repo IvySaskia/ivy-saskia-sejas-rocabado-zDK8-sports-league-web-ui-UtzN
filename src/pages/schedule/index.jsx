@@ -14,7 +14,8 @@ import {
   Th,
   Td,
   TableContainer,
-  HStack
+  HStack,
+  Hide,
 } from "@chakra-ui/react";
 
 import Moment from 'moment';
@@ -30,6 +31,23 @@ const renderFlag = (flagName) => {
 
 const getFlagByName = (flagName) => {
   return `https://flagsapi.codeaid.io/${flagName}.png`;
+};
+
+const renderSwitchHeader = (param, h) => {
+  switch(param) {
+    case 0:
+      return <Hide below="500px">
+              <Th key={h}> {h} </Th>
+            </Hide>;
+    case 1:
+      return <Hide below="751px">
+              <Th key={h}> {h} </Th>
+            </Hide>;
+    case 2:
+      return <Th key={h} textAlign="right"> {h} </Th>;
+    default:
+      return <Th key={h}> {h} </Th>;
+  }
 };
 
 const Schedule = () => {
@@ -64,18 +82,7 @@ const Schedule = () => {
           <Thead>
             <Tr>
               {headers.map((h, index) => (
-                index === 2?
-                  <Th
-                    key={h}
-                    textAlign="right"
-                  >
-                    {h}
-                  </Th> :
-                  <Th
-                    key={h}
-                  >
-                    {h}
-                  </Th>
+                <> {renderSwitchHeader(index, h)} </>
               ))}
             </Tr>
           </Thead>
@@ -83,9 +90,14 @@ const Schedule = () => {
             {
               allMatches.map((m, index) => (
                 <Tr key={index}>
-                  <Td isNumeric>{Moment(m.matchDate).format('D.M.YYYY')}
-                    <br/> {Moment(m.matchDate).format('hh:mm')}</Td>
-                  <Td>{ m.stadium  }</Td>
+                  <Hide below="500px">
+                    <Td isNumeric>{Moment(m.matchDate).format('D.M.YYYY')}
+                      <br /> {Moment(m.matchDate).format('hh:mm')}
+                    </Td>
+                    </Hide>
+                  <Hide below="751px">
+                    <Td>{m.stadium}</Td>
+                  </Hide>
                   <Td>
                     <HStack justifyContent="right">
                       <p>{m.homeTeam}</p>
