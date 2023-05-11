@@ -1,23 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { GlobalContext } from "../../contexts/GlobalContext";
 
 import {
-  Box,
   Center,
   Flex,
   Heading,
   Table,
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
-  TableCaption,
   TableContainer,
-  VStack
 } from "@chakra-ui/react";
 
 const Schedule = () => {
+  const headers = ['Date/Time', 'Stadim', 'Home Team', '', 'Away Team'];
+
+  const { state } = useContext(GlobalContext);
+  const { allMatches } = state;
+  
   return (
     <Flex
       width="100%"
@@ -43,15 +46,24 @@ const Schedule = () => {
         >
           <Thead>
             <Tr>
-              <Th>Date/Time</Th>
-              <Th>Stadim</Th>
-              <Th>Home Team</Th>
-              <Th></Th>
-              <Th>Away Team</Th>
+              {headers.map((h) => (
+                <Th key={h}>{h}</Th>
+              ))}
             </Tr>
           </Thead>
           <Tbody>
-            <Tr>
+            {
+              allMatches.map((m, index) => (
+                <Tr>
+                  <Td>{ index}{ m.matchDate }</Td>
+                  <Td>{ m.stadium  }</Td>
+                  <Td>{ m.homeTeam  }</Td>
+                  <Td>{ m.homeTeamScore  } : { m.awayTeamScore }</Td>
+                  <Td>{m.awayTeam}</Td>
+                </Tr>
+            ))}
+
+            {/* <Tr>
               <Td>5.5.2022</Td>
               <Td>Macarana</Td>
               <Td>Brazil</Td>
@@ -71,14 +83,7 @@ const Schedule = () => {
               <Td>Brazil</Td>
               <Td>1 : 0</Td>
               <Td>Serbia</Td>
-            </Tr>
-            <Tr>
-              <Td>5.5.2022</Td>
-              <Td>Macarana</Td>
-              <Td>Brazil</Td>
-              <Td>1 : 0</Td>
-              <Td>Serbia</Td>
-            </Tr>
+            </Tr> */}
           </Tbody>
         </Table>
       </TableContainer>

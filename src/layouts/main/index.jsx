@@ -11,14 +11,16 @@ import useApi from "../../hooks/useApi";
 import { GlobalContext } from "../../contexts/GlobalContext";
 
 const MainLayout = ({ children }) => {
-  const { getAccessToken } = useApi();
-  const { storeToken } = useContext(GlobalContext);
+  const { getAccessToken, getAllMatches } = useApi();
+  const { storeToken, setMatches } = useContext(GlobalContext);
 
   
   const fetchData = async () => {
-    const res = await getAccessToken();
+    let res = await getAccessToken();
     const { access_token } = res;
-    storeToken(access_token)
+    storeToken(access_token);
+    res = await getAllMatches(access_token);
+    setMatches(res);
   };
 
   useEffect(() => {

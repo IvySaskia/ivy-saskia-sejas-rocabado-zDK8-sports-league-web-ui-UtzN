@@ -1,6 +1,7 @@
 import React, { createContext, useState } from 'react';
 const initialState = {
   token: "",
+  allMatches: []
 };
 
 export const useInitialState = () => {
@@ -10,9 +11,14 @@ export const useInitialState = () => {
     setState({ ...state, token: payload });
   };
 
+  const setMatches = (payload) => {
+    setState({ ...state, allMatches: payload.matches });
+  };
+
   return {
     state,
     storeToken,
+    setMatches
   };
 };
 
