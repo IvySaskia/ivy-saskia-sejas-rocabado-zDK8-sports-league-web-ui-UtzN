@@ -9,9 +9,6 @@ const theme = extendTheme({
     Table: {
       baseStyle: {
         tr: {
-          _even: {
-            background: "#F6F7F7",
-          },
           th: {
             background: "#E4EDF2",
             color: "#182C62",
@@ -26,6 +23,19 @@ const theme = extendTheme({
           },
         },
       },
+      variants: {
+        'customStriped': {
+          tr: {
+            _even: {
+              background: "#F6F7F7",
+            },
+            _odd: {
+              background: "white",
+            }
+          }
+        }
+      }, 
+
     },
   },
 })

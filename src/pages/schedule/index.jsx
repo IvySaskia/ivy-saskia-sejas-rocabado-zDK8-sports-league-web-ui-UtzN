@@ -33,17 +33,17 @@ const getFlagByName = (flagName) => {
   return `https://flagsapi.codeaid.io/${flagName}.png`;
 };
 
-const renderSwitchHeader = (param, h) => {
-  switch(param) {
-    case 0:
+const renderSwitchHeader = (h) => {
+  switch(h) {
+    case "Date/Time":
       return <Hide below="500px">
               <Th key={h} textAlign="right"> {h} </Th>
             </Hide>;
-    case 1:
+    case "Stadim":
       return <Hide below="751px">
               <Th key={h}> {h} </Th>
             </Hide>;
-    case 2:
+    case "Home Team":
       return <Th key={h} textAlign="right"> {h} </Th>;
     default:
       return <Th key={h}> {h} </Th>;
@@ -78,6 +78,7 @@ const Schedule = () => {
       <TableContainer>
         <Table
           w='100%'
+          variant='customStriped'
         >
           <Thead>
             <Tr>
