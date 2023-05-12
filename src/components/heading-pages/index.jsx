@@ -5,7 +5,7 @@ import {
   Heading,
 } from "@chakra-ui/react";
 
-const PagesHeading = ({ title }) => {
+const HeadingPages = ({ title }) => {
     return (   
       <Center>
         <Heading
@@ -21,4 +21,4 @@ const PagesHeading = ({ title }) => {
     );
 };
 
-export default PagesHeading;
+export default HeadingPages;

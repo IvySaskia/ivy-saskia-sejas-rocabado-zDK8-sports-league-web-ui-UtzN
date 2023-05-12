@@ -17,7 +17,7 @@ import {
 
 import Moment from 'moment';
 
-import PagesHeading from "../../components/pages-heading";
+import HeadingPages from "../../components/heading-pages";
 import Flag from "../../components/flag";
 
 const renderSwitchHeader = (h) => {
@@ -50,7 +50,7 @@ const Schedule = () => {
       px={"5%"}
       direction={"column"}
     >
-      <PagesHeading title={"League Schedule"}/>
+      <HeadingPages title={"League Schedule"}/>
 
       <TableContainer>
         <Table
