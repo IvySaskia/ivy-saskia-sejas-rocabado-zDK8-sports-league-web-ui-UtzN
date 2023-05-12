@@ -19,19 +19,7 @@ import {
   Show
 } from "@chakra-ui/react";
 
-
-const renderFlag = (flagName) => {
-  return <Image
-    src={getFlagByName(flagName)}
-    alt={flagName}
-    width="53px"
-    height="37px"
-  />
-};
-
-const getFlagByName = (flagName) => {
-  return `https://flagsapi.codeaid.io/${flagName}.png`;
-};
+import Flag from "../../components/flag";
 
 const renderSwitchHeader = (h) => {
   switch(h) {
@@ -199,7 +187,7 @@ const Leaderboard = () => {
                 <Tr key={team}>
                   <Td width="55%">
                     <HStack justifyContent="left">
-                      {renderFlag(team)}
+                      <Flag flagName={ team} />
                       <p>{team}</p>
                     </HStack>
                   </Td>

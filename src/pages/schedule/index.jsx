@@ -20,18 +20,7 @@ import {
 
 import Moment from 'moment';
 
-const renderFlag = (flagName) => {
-  return <Image
-    src={getFlagByName(flagName)}
-    alt={flagName}
-    width="53px"
-    height="37px"
-  />
-};
-
-const getFlagByName = (flagName) => {
-  return `https://flagsapi.codeaid.io/${flagName}.png`;
-};
+import Flag from "../../components/flag";
 
 const renderSwitchHeader = (h) => {
   switch(h) {
@@ -100,13 +89,13 @@ const Schedule = () => {
                   <Td>
                     <HStack justifyContent="right">
                       <p>{m.homeTeam}</p>
-                      {renderFlag(m.homeTeam)}
+                      <Flag flagName={m.homeTeam} />
                     </HStack>
                   </Td>
                   <Td px="0" textAlign="center">{ m.homeTeamScore  } : { m.awayTeamScore }</Td>
                   <Td>
                     <HStack justifyContent="left">
-                      {renderFlag(m.awayTeam)}
+                      <Flag flagName={m.awayTeam} />
                       <p>{m.awayTeam}</p>
                     </HStack>
                   </Td>
