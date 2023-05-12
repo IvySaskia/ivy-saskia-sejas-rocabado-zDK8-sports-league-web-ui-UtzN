@@ -7,25 +7,30 @@ import {
   Flex
 } from "@chakra-ui/react";
 
-import useApi from "../../hooks/useApi";
-import { GlobalContext } from "../../contexts/GlobalContext";
+import LeagueService from "../../services/LeagueService";
+import { LeagueContext } from "../../contexts/LeagueContext";
 
 const MainLayout = ({ children }) => {
-  const { getAccessToken, getAllMatches } = useApi();
-  const { storeToken, setMatches } = useContext(GlobalContext);
+  const { storeToken, setMatches, setLeaderboard } = useContext(LeagueContext);
 
-  
-  const fetchData = async () => {
-    let res = await getAccessToken();
-    const { access_token } = res;
-    storeToken(access_token);
-    res = await getAllMatches(access_token);
-    setMatches(res);
-  };
+  const fetchLeagueData = async () => {
+    try {
+      const leagueService = new LeagueService();
+      await leagueService.fetchData();
+      const matches = leagueService.getMatches();
+      const leaderboard = leagueService.getLeaderboard();
+      const token = leagueService.getAccessToken();
+      storeToken(token);
+      setLeaderboard(leaderboard);
+      setMatches(matches);
+    } catch (error) {
+      throw error;
+    }
+  }
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    fetchLeagueData();
+  },[]);
 
 
   return (

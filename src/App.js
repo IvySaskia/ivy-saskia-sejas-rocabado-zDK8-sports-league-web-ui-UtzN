@@ -13,11 +13,11 @@ import NoPage from "./pages/no-page";
 
 import theme from './theme';
 
-import GlobalContextProvider from './contexts/GlobalContext';
+import LeagueContextProvider from './contexts/LeagueContext';
 
 function App() {  return (
     <ChakraProvider theme={theme}>
-      <GlobalContextProvider>
+      <LeagueContextProvider>
         <MainLayout>
           <Switch>
             <Route exact path="/">
@@ -34,7 +34,7 @@ function App() {  return (
             </Route>
           </Switch>
         </MainLayout>
-      </GlobalContextProvider>
+      </LeagueContextProvider>
     </ChakraProvider>
   );
 }

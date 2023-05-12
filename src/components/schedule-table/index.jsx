@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { GlobalContext } from "../../contexts/GlobalContext";
+import { LeagueContext } from "../../contexts/LeagueContext";
 
 import {
   Table,
@@ -24,7 +24,7 @@ const renderSwitchHeader = (h) => {
   switch(h) {
     case "Date/Time":
       return <Hide below="500px">
-              <Th key={h}>{h}</Th>
+              <Th key={h} textAlign="right" width={"5%"}>{h}</Th>
             </Hide>;
     case "Stadim":
       return <Hide below="751px">
@@ -38,11 +38,11 @@ const renderSwitchHeader = (h) => {
 };
 
 const ScheduleTable = ({ title }) => {
-    const headers = ['Date/Time', 'Stadim', 'Home Team', '', 'Away Team'];
-
-    const { state } = useContext(GlobalContext);
-    const { allMatches } = state;
+  const headers = ['Date/Time', 'Stadim', 'Home Team', '', 'Away Team'];
   
+  const { state } = useContext(LeagueContext);
+  const { allMatches } = state;
+
     return (   
       <TableContainer>
         <Table
@@ -55,31 +55,34 @@ const ScheduleTable = ({ title }) => {
               ))}</Tr>
           </Thead>
           <Tbody>
-            {
-              allMatches.map((m, index) => (
-                <Tr key={index}>
-                  <Hide below="500px">
-                    <Td isNumeric>{Moment(m.matchDate).format('D.M.YYYY')}
-                      <br /> {Moment(m.matchDate).format('hh:mm')}
-                    </Td>
-                    </Hide>
-                  <Hide below="751px">
-                    <Td>{m.stadium}</Td>
-                  </Hide>
-                  <Td>
-                    <HStack justifyContent="right">
-                      <p>{m.homeTeam}</p>
-                      <Flag flagName={m.homeTeam} />
-                    </HStack>
+            {allMatches.map(({ matchDate, stadium, homeTeam, homeTeamScore, awayTeamScore, awayTeam }, index) => (
+              <Tr key={index}>
+                <Hide below="500px">
+                  <Td textAlign="right">
+                    {Moment(matchDate).format('D.M.YYYY')}
+                    <br />
+                    {Moment(matchDate).format('hh:mm')}
                   </Td>
-                  <Td px="0" textAlign="center">{ m.homeTeamScore  } : { m.awayTeamScore }</Td>
-                  <Td>
-                    <HStack justifyContent="left">
-                      <Flag flagName={m.awayTeam} />
-                      <p>{m.awayTeam}</p>
-                    </HStack>
-                  </Td>
-                </Tr>
+                </Hide>
+                <Hide below="751px">
+                  <Td>{stadium}</Td>
+                </Hide>
+                <Td>
+                  <HStack justifyContent="right">
+                    <p>{homeTeam}</p>
+                    <Flag flagName={homeTeam} />
+                  </HStack>
+                </Td>
+                <Td px="0" textAlign="center">
+                  {homeTeamScore} : {awayTeamScore}
+                </Td>
+                <Td>
+                  <HStack justifyContent="left">
+                    <Flag flagName={awayTeam} />
+                    <p>{awayTeam}</p>
+                  </HStack>
+                </Td>
+              </Tr>
             ))}
           </Tbody>
         </Table>
