@@ -37,16 +37,16 @@ const renderSwitchHeader = (h) => {
   switch(h) {
     case "Date/Time":
       return <Hide below="500px">
-              <Th key={h} textAlign="right"> {h} </Th>
+              <Th key={h}>{h}</Th>
             </Hide>;
     case "Stadim":
       return <Hide below="751px">
-              <Th key={h}> {h} </Th>
+              <Th key={h}>{h}</Th>
             </Hide>;
     case "Home Team":
-      return <Th key={h} textAlign="right"> {h} </Th>;
+      return <Th key={h} textAlign="right">{h}</Th>;
     default:
-      return <Th key={h}> {h} </Th>;
+      return <Th key={h}>{h}</Th>;
   }
 };
 
@@ -81,11 +81,9 @@ const Schedule = () => {
           variant='customStriped'
         >
           <Thead>
-            <Tr>
-              {headers.map((h, index) => (
-                <> {renderSwitchHeader(index, h)} </>
-              ))}
-            </Tr>
+            <Tr>{headers.map((h, index) => (
+                <>{renderSwitchHeader(h)}</>
+              ))}</Tr>
           </Thead>
           <Tbody>
             {
