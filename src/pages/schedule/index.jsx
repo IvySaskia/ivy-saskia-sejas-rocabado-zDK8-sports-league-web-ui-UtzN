@@ -6,7 +6,6 @@ import {
   Center,
   Flex,
   Heading,
-  Image,
   Table,
   Thead,
   Tbody,
@@ -20,6 +19,7 @@ import {
 
 import Moment from 'moment';
 
+import PagesHeading from "../../components/pages-heading";
 import Flag from "../../components/flag";
 
 const renderSwitchHeader = (h) => {
@@ -52,17 +52,7 @@ const Schedule = () => {
       px={"5%"}
       direction={"column"}
     >
-      <Center>
-        <Heading
-          fontSize='24px'
-          mt={"60px"}
-          mb={"20px"}
-          color={"#182C62"}
-          alignContent={"center"}
-        >
-          League Schedule
-        </Heading>
-      </Center>
+      <PagesHeading title={"League Schedule"}/>
 
       <TableContainer>
         <Table
