@@ -3,9 +3,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { GlobalContext } from "../../contexts/GlobalContext";
 
 import {
-  Center,
   Flex,
-  Heading,
   Table,
   Thead,
   Tbody,
