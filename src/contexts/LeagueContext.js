@@ -9,18 +9,19 @@ export const useInitialState = () => {
   const [state, setState] = useState(initialState);
 
   const storeToken = (payload) => {
-    setState({ ...state, token: payload });
-  };
+    setState((prevState) => {
+      return { ...prevState, token: payload };
+    });  };
 
   const setMatches = (payload) => {
     setState((prevState) => {
-        return { ...prevState, allMatches: payload };
+      return { ...prevState, allMatches: payload };
     });
   };
 
   const setLeaderboard = (payload) => {
     setState((prevState) => {
-        return { ...prevState, allLeaderboad: payload };
+      return { ...prevState, allLeaderboad: payload };
     });
   };
 
