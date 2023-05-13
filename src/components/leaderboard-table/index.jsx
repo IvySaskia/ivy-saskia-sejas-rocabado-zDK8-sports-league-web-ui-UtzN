@@ -72,13 +72,13 @@ const LeaderboardTable = () => {
                     <Text fontSize={"16px"}>{teamName}</Text>
                   </HStack>
                 </Td>
-                <Td textAlign="center">{matchesPlayed}</Td>
+                <Td textAlign="center" fontWeight="light">{matchesPlayed}</Td>
                 <Hide below="500px">
-                  <Td textAlign="center">{goalsFor}</Td>
-                  <Td textAlign="center">{goalsAgainst}</Td>
+                  <Td textAlign="center" fontWeight="light">{goalsFor}</Td>
+                  <Td textAlign="center" fontWeight="light">{goalsAgainst}</Td>
                 </Hide>
                 <Show below="500px">
-                  <Td textAlign="center">{goalDifference}</Td>
+                  <Td textAlign="center" fontWeight="light">{goalDifference}</Td>
                 </Show>
               <Td textAlign="center" color={"blue"}>{points}</Td>
               </Tr>

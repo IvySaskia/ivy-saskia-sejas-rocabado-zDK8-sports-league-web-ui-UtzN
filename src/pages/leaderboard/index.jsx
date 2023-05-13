@@ -4,7 +4,7 @@ import {
   Flex
 } from "@chakra-ui/react";
 
-import HeadingPages from "../../components/heading-pages";
+import PageHeading from "../../components/page-heading";
 import LeaderboardTable from "../../components/leaderboard-table";
 
 const Leaderboard = () => {
@@ -16,7 +16,7 @@ const Leaderboard = () => {
       px={"5%"}
       direction={"column"}
     >
-      <HeadingPages title={"League Standings"} />
+      <PageHeading title={"League Standings"} />
       <LeaderboardTable/>
     </Flex>
   );

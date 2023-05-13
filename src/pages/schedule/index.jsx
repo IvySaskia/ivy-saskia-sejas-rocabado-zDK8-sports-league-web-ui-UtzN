@@ -4,7 +4,7 @@ import {
   Flex
 } from "@chakra-ui/react";
 
-import HeadingPages from "../../components/heading-pages";
+import PageHeading from "../../components/page-heading";
 import ScheduleTable from "../../components/schedule-table";
 
 const Schedule = () => {
@@ -15,7 +15,7 @@ const Schedule = () => {
       px={"5%"}
       direction={"column"}
     >
-      <HeadingPages title={"League Schedule"} />
+      <PageHeading title={"League Schedule"} />
       <ScheduleTable/>
     </Flex>
   );

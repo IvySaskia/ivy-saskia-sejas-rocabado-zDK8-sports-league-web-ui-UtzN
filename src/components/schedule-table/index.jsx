@@ -58,14 +58,14 @@ const ScheduleTable = ({ title }) => {
             {allMatches.map(({ matchDate, stadium, homeTeam, homeTeamScore, awayTeamScore, awayTeam }, index) => (
               <Tr key={index}>
                 <Hide below="500px">
-                  <Td textAlign="right" >
+                  <Td textAlign="right" fontWeight="light">
                     {Moment(matchDate).format('D.M.YYYY')}
                     <br />
                     {Moment(matchDate).format('hh:mm')}
                   </Td>
                 </Hide>
                 <Hide below="751px">
-                  <Td>{stadium}</Td>
+                  <Td fontWeight="light">{stadium}</Td>
                 </Hide>
                 <Td>
                   <HStack justifyContent="right">
@@ -73,7 +73,7 @@ const ScheduleTable = ({ title }) => {
                     <Flag flagName={homeTeam} />
                   </HStack>
                 </Td>
-                <Td px="0" textAlign="center" c>
+                <Td px="0" textAlign="center" fontSize={"16px"}>
                   {homeTeamScore} : {awayTeamScore}
                 </Td>
                 <Td>
