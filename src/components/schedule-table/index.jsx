@@ -12,7 +12,7 @@ import {
   TableContainer,
   HStack,
   Hide,
-
+  Text
 } from "@chakra-ui/react";
 
 import Flag from "../flag";
@@ -58,7 +58,7 @@ const ScheduleTable = ({ title }) => {
             {allMatches.map(({ matchDate, stadium, homeTeam, homeTeamScore, awayTeamScore, awayTeam }, index) => (
               <Tr key={index}>
                 <Hide below="500px">
-                  <Td textAlign="right">
+                  <Td textAlign="right" >
                     {Moment(matchDate).format('D.M.YYYY')}
                     <br />
                     {Moment(matchDate).format('hh:mm')}
@@ -69,17 +69,17 @@ const ScheduleTable = ({ title }) => {
                 </Hide>
                 <Td>
                   <HStack justifyContent="right">
-                    <p>{homeTeam}</p>
+                    <Text fontSize={"16px"}>{homeTeam}</Text>
                     <Flag flagName={homeTeam} />
                   </HStack>
                 </Td>
-                <Td px="0" textAlign="center">
+                <Td px="0" textAlign="center" c>
                   {homeTeamScore} : {awayTeamScore}
                 </Td>
                 <Td>
                   <HStack justifyContent="left">
                     <Flag flagName={awayTeam} />
-                    <p>{awayTeam}</p>
+                    <Text fontSize={"16px"}>{awayTeam}</Text>
                   </HStack>
                 </Td>
               </Tr>

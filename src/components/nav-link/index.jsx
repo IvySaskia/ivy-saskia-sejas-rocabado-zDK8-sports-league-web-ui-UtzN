@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 const NavLink = ({ children, ...props }) => (
   <DefaultLink
     as={Link}
-    rounded={"md"}
     {...props}
   >
     {children}

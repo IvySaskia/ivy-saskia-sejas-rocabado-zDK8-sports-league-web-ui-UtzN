@@ -21,7 +21,7 @@ const theme = extendTheme({
           td: {
             height: "70px"
           },
-        },
+       },
       },
       variants: {
         'customStriped': {

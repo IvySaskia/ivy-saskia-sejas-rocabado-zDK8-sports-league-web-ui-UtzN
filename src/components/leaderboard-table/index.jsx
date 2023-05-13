@@ -12,7 +12,8 @@ import {
   TableContainer,
   HStack,
   Hide,
-  Show
+  Show,
+  Text
 } from "@chakra-ui/react";
 
 import Flag from "../flag";
@@ -68,7 +69,7 @@ const LeaderboardTable = () => {
                 <Td width="55%">
                   <HStack justifyContent="left">
                     <Flag flagName={teamName} />
-                    <p>{teamName}</p>
+                    <Text fontSize={"16px"}>{teamName}</Text>
                   </HStack>
                 </Td>
                 <Td textAlign="center">{matchesPlayed}</Td>
@@ -79,7 +80,7 @@ const LeaderboardTable = () => {
                 <Show below="500px">
                   <Td textAlign="center">{goalDifference}</Td>
                 </Show>
-                <Td textAlign="center">{points}</Td>
+              <Td textAlign="center" color={"blue"}>{points}</Td>
               </Tr>
           ))}
         </Tbody>
