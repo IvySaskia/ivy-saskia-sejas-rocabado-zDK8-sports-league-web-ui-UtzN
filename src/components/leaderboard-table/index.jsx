@@ -49,7 +49,6 @@ const commonTd = (content) => {
   return (
     <Td
       textAlign="center"
-      fontWeight="light"
     >
       {content}
     </Td>
