@@ -45,6 +45,17 @@ const renderSwitchHeader = (h) => {
   }
 };
 
+const commonTd = (content) => {
+  return (
+    <Td
+      textAlign="center"
+      fontWeight="light"
+    >
+      {content}
+    </Td>
+  );
+};
+
 
 const LeaderboardTable = () => {
   
@@ -72,13 +83,13 @@ const LeaderboardTable = () => {
                     <Text fontSize={"16px"}>{teamName}</Text>
                   </HStack>
                 </Td>
-                <Td textAlign="center" fontWeight="light">{matchesPlayed}</Td>
+                <>{commonTd(matchesPlayed)}</>
                 <Hide below="500px">
-                  <Td textAlign="center" fontWeight="light">{goalsFor}</Td>
-                  <Td textAlign="center" fontWeight="light">{goalsAgainst}</Td>
+                  <>{commonTd(goalsFor)}</>
+                  <>{commonTd(goalsAgainst)}</>
                 </Hide>
                 <Show below="500px">
-                  <Td textAlign="center" fontWeight="light">{goalDifference}</Td>
+                  <>{commonTd(goalDifference)}</>
                 </Show>
               <Td textAlign="center" color={"blue"}>{points}</Td>
               </Tr>
