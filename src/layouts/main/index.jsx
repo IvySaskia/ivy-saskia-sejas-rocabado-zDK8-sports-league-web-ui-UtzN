@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import Footer from "../footer";
 import Header from "../header/index.jsx";
 
@@ -12,10 +12,20 @@ import { LeagueContext } from "../../contexts/LeagueContext";
 
 const MainLayout = ({ children }) => {
   const { storeToken, setMatches, setLeaderboard } = useContext(LeagueContext);
+  const [apiVersion, setApiVersion] = useState("");
+  const leagueService = new LeagueService();
+
+  const retrieveApiVersion = async () => {
+  try {
+    const res = await leagueService.getApiVersion();
+    setApiVersion(res);
+  } catch (error) {
+    throw error;
+  }
+};
 
   const fetchLeagueData = async () => {
     try {
-      const leagueService = new LeagueService();
       await leagueService.fetchData();
       const matches = leagueService.getMatches();
       const leaderboard = leagueService.getLeaderboard();
@@ -26,13 +36,13 @@ const MainLayout = ({ children }) => {
     } catch (error) {
       throw error;
     }
-  }
+  };
 
   useEffect(() => {
     fetchLeagueData();
-  },[]);
-
-
+    retrieveApiVersion();
+  }, []);
+  
   return (
     <Flex minH="100vh" direction="column">
       <Header/>
@@ -41,7 +51,7 @@ const MainLayout = ({ children }) => {
       >
         {children}
       </Box>
-      <Footer />
+      <Footer apiVersion={apiVersion} />
     </Flex>
   );
 };

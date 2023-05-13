@@ -171,7 +171,16 @@ class LeagueService {
                 this.leaderboard = leaderboardData;
             resolve();
             });
+    }
+
+    async getApiVersion() {
+        try {
+            const response = await axios.get(`${API_URL}api/version`);
+            return response.data.version;
+        } catch (error) {
+            throw error;
         }
+    }
 }
 
 export default LeagueService;
