@@ -14,7 +14,7 @@ In order to work on the frontend application we have provided a simple mock data
 
 To run the mock server run the following command:
 
-> **npx json-fake-server -m dev-mock-server-config.json
+> **npx** json-fake-server -m dev-mock-server-config.json
 
 After this you would be able to access backend at http://localhost:3001. To verify if the server is running you can run:
 
